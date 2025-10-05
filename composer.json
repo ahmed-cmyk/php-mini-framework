@@ -1,0 +1,17 @@
+{
+    "name": "ahmed/php-blog",
+    "description": "A blog website meant to practice vanilla PHP and learn Laravel by creating a minimalistic version",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Ahmed Ikram",
+            "email": "ikramahmed398@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }
+}
