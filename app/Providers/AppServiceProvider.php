@@ -21,6 +21,10 @@ class AppServiceProvider
     {
         $this->app->singleton('db', fn() => new \App\Database\Connection(config('db')));
         $this->app->singleton('db.builder', fn($app) => new \App\Database\DB($app));
-        $this->app->singleton('kernel', fn($app) => new \App\Support\Http\Kernel($app));
+        $this->app->singleton('request', fn() => new \App\Support\Http\Request());
+        $this->app->singleton('kernel', function ($app) {
+            $request = $app->get('request');
+            return new \App\Support\Http\Kernel($request);
+        });
     }
 }

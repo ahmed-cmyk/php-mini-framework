@@ -38,6 +38,11 @@ class Request implements DataBag
         return $_SERVER['PATH_INFO'];
     }
 
+    public function uri(): string
+    {
+        return $_SERVER['REQUEST_URI'];
+    }
+
     public function url(): string
     {
         $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';

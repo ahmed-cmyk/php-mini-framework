@@ -13,7 +13,7 @@ class Kernel
 
     public function handle()
     {
-        $router = new Route();
+        $router = new Router();
         $response = $router->dispatch($this->request);
         return $response;
     }
