@@ -5,16 +5,17 @@ namespace App\Support\Http;
 class Kernel
 {
     private ?Request $request = null;
+    private $router;
 
-    public function __construct(Request $request)
+    public function __construct(Request $request, $router)
     {
         $this->request = $request;
+        $this->router = $router;
     }
 
     public function handle()
     {
-        $router = new Router();
-        $response = $router->dispatch($this->request);
+        $response = $this->router->dispatch($this->request);
         return $response;
     }
 }

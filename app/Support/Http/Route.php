@@ -35,8 +35,14 @@ class Route
     protected function addRoute(string $method, string $uri, mixed $action): void
     {
         [$controller, $func] = $this->formatPath($action);
+        // If controller is already a fully qualified class name, use as-is
+        if (class_exists($controller)) {
+            $fqController = $controller;
+        } else {
+            $fqController = "\\App\\Controllers\\{$controller}";
+        }
         $this->routes[$method][$uri] = [
-            'controller' => "\\App\\Controllers\\{$controller}",
+            'controller' => $fqController,
             'func' => "{$func}"
         ];
     }
