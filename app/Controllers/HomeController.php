@@ -10,4 +10,9 @@ class HomeController
     {
         return response()->view('home', ["message" => "Hello, World!"], 200);
     }
+
+    public function indexJson(): Response
+    {
+        return response()->json(['message' => 'Hello, World!'], 200);
+    }
 }

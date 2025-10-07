@@ -8,6 +8,9 @@ class RouteServiceProvider
     {
         // Load routes from routes/web.php file
         $this->loadRoutesFrom(base_path('routes/web.php'));
+
+        // Load routes from routes/api.php file
+        $this->loadRoutesFrom(base_path('routes/api.php'));
     }
 
     protected function loadRoutesFrom(string $path): void
