@@ -30,6 +30,11 @@ class Response
         return $this;
     }
 
+    public static function redirect(string $url, int $status = 302): self
+    {
+        return new static('', $status, ['Location' => $url]);
+    }
+
     public function send(): void
     {
         http_response_code($this->status);

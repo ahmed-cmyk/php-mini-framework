@@ -19,6 +19,13 @@ if (!function_exists('config')) {
     }
 }
 
+if (!function_exists('redirect')) {
+    function redirect(string $url , int $status = 302)
+    {
+        return \App\Support\Http\Response::redirect($url, $status);
+    }
+}
+
 if (!function_exists('response')) {
     function response()
     {
