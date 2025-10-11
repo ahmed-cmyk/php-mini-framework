@@ -19,6 +19,14 @@ if (!function_exists('config')) {
     }
 }
 
+if (!function_exists('env')) {
+    function env(string $key, mixed $default = null)
+    {
+        $value = getenv($key);
+        return $value === false ? $default : $value;
+    }
+}
+
 if (!function_exists('redirect')) {
     function redirect(string $url , int $status = 302)
     {
