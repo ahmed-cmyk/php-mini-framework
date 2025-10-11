@@ -10,8 +10,11 @@ class Connection
     
     public function __construct(array $config)
     {
-        $dsn = "mysql:host={$config['host']};dbname={$config['dbname']};charset={$config['charset']}";
-        $this->pdo = new PDO($dsn, $config['username'], $config['password'], [
+        $connection = $config['default'];
+        $db = $config['connections'][$connection];
+
+        $dsn = "mysql:host={$db['host']};dbname={$db['database']};charset={$db['charset']}";
+        $this->pdo = new PDO($dsn, $db['username'], $db['password'], [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         ]);
     }
